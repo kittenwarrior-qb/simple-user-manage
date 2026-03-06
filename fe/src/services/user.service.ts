@@ -84,7 +84,7 @@ export const userService = {
     await api.patch(`/users/${id}/activate`)
   },
 
-  assignTeam: async (userId: number, teamId: number): Promise<void> => {
+  assignTeam: async (userId: number, teamId: number | null): Promise<void> => {
     await api.patch(`/users/${userId}/assign-team`, null, { params: { teamId } })
   },
 }

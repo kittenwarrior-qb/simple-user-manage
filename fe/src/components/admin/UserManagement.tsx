@@ -31,6 +31,7 @@ import { cn } from "@/lib/utils"
 import { userService, type User, type CreateUserRequest } from "@/services/user.service"
 import { teamService, type Team } from "@/services/team.service"
 import { ArrowUpDown, ChevronDown } from "lucide-react"
+import { toast } from "sonner"
 
 export default function UserManagement() {
   const [users, setUsers] = useState<User[]>([])
@@ -114,22 +115,31 @@ export default function UserManagement() {
     try {
       if (newStatus === "ACTIVE") {
         await userService.activateUser(userId)
+        toast.success("Đã kích hoạt người dùng")
       } else {
         await userService.restrictUser(userId)
+        toast.success("Đã khóa người dùng")
       }
       fetchUsers()
     } catch (error) {
       console.error("Failed to change status:", error)
+      toast.error("Không thể thay đổi trạng thái")
     }
   }
 
-  const handleAssignTeam = async (userId: number, teamId: number) => {
+  const handleAssignTeam = async (userId: number, teamId: number | null) => {
     console.log("Assigning team:", userId, teamId)
     try {
       await userService.assignTeam(userId, teamId)
+      if (teamId === null) {
+        toast.success("Đã xóa người dùng khỏi nhóm")
+      } else {
+        toast.success("Đã gán người dùng vào nhóm")
+      }
       fetchUsers()
     } catch (error) {
       console.error("Failed to assign team:", error)
+      toast.error("Không thể gán nhóm")
     }
   }
 
@@ -147,6 +157,7 @@ export default function UserManagement() {
         role: "USER",
         status: "ACTIVE",
       })
+      toast.success("Đã tạo người dùng thành công")
       fetchUsers()
     } catch (error: unknown) {
       console.error("Failed to create user:", error)
@@ -156,6 +167,7 @@ export default function UserManagement() {
         errorMessage = axiosError.response?.data?.message || errorMessage
       }
       setCreateError(errorMessage)
+      toast.error("Tạo người dùng thất bại")
     }
   }
 
@@ -266,6 +278,17 @@ export default function UserManagement() {
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
+              {user.team && (
+                <DropdownMenuItem
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleAssignTeam(user.id, null)
+                  }}
+                  className="text-red-600"
+                >
+                  Xóa khỏi nhóm
+                </DropdownMenuItem>
+              )}
               {teams.map((team) => (
                 <DropdownMenuItem
                   key={team.id}
