@@ -130,4 +130,11 @@ public class UserController implements UserAPI {
         var user = userUseCaseService.activateUser(id);
         return ResponseEntity.ok(ApiResponse.success("User activated successfully", userModelMapper.toResponse(user)));
     }
+
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<ApiResponse<UserResponse>> assignTeam(Long userId, Long teamId) {
+        var user = userUseCaseService.assignTeam(userId, teamId);
+        return ResponseEntity.ok(ApiResponse.success("User assigned to team successfully", userModelMapper.toResponse(user)));
+    }
 }

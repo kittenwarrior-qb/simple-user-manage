@@ -54,4 +54,10 @@ public interface UserAPI {
 
     @PatchMapping("/{id}/activate")
     ResponseEntity<ApiResponse<UserResponse>> activateUser(@PathVariable Long id);
+
+    @PatchMapping("/{userId}/assign-team")
+    ResponseEntity<ApiResponse<UserResponse>> assignTeam(
+            @PathVariable Long userId,
+            @RequestParam(required = false) Long teamId
+    );
 }

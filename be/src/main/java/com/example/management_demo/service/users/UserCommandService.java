@@ -1,6 +1,7 @@
 package com.example.management_demo.service.users;
 
 import com.example.management_demo.dto.users.User;
+import com.example.management_demo.repository.database.team.TeamRepository;
 import com.example.management_demo.repository.database.users.UserEntity;
 import com.example.management_demo.repository.database.users.UserMapper;
 import com.example.management_demo.repository.database.users.UserRepository;
@@ -24,6 +25,7 @@ public class UserCommandService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;    
     private final PasswordEncoder passwordEncoder;
+    private final TeamRepository teamRepository;
 
     public List<User> createRandomUsers(int quantity) {
         if (quantity <= 0 || quantity > 100) {
@@ -170,5 +172,32 @@ public class UserCommandService {
         User activated = userMapper.toUser(userRepository.save(entity));
         log.info("User activated successfully: {}", id);
         return activated;
+    }
+
+    public User assignTeam(Long userId, Long teamId) {
+        log.debug("Assigning user {} to team {}", userId, teamId);
+        
+        UserEntity userEntity = userRepository.findById(userId)
+                .orElseThrow(() -> {
+                    log.warn("Failed to assign team: User not found with id: {}", userId);
+                    return new IllegalArgumentException("User not found with id: " + userId);
+                });
+        
+        if (teamId == null) {
+            userEntity.setTeam(null);
+            log.info("User {} removed from team", userId);
+        } else {
+            var teamEntity = teamRepository.findById(teamId)
+                    .orElseThrow(() -> {
+                        log.warn("Failed to assign team: Team not found with id: {}", teamId);
+                        return new IllegalArgumentException("Team not found with id: " + teamId);
+                    });
+            
+            userEntity.setTeam(teamEntity);
+            log.info("User {} assigned to team {}", userId, teamId);
+        }
+        
+        User assigned = userMapper.toUser(userRepository.save(userEntity));
+        return assigned;
     }
 }

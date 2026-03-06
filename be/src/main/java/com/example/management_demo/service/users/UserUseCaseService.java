@@ -61,4 +61,9 @@ public class UserUseCaseService {
                                          Pageable pageable) {
         return userQueryService.getUsersWithFilter(userName, userEmail, phoneNumber, status, pageable);
     }
+
+    @Transactional
+    public User assignTeam(Long userId, Long teamId) {
+        return userCommandService.assignTeam(userId, teamId);
+    }
 }
