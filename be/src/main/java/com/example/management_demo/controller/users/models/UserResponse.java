@@ -7,5 +7,11 @@ public record UserResponse(
         String userAddress,
         String phoneNumber,
         String status,
-        String role
-) {}
+        String role,
+        TeamInfo team
+) {
+    public record TeamInfo(
+            Long id,
+            String teamName
+    ) {}
+}

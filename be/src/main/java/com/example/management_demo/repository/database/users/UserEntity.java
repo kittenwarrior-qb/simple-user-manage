@@ -1,6 +1,6 @@
 package com.example.management_demo.repository.database.users;
 
-import com.example.management_demo.repository.database.company.TeamEntity;
+import com.example.management_demo.repository.database.team.TeamEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

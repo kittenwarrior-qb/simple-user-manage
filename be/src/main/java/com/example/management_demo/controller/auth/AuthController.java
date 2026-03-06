@@ -47,6 +47,14 @@ public class AuthController implements AuthAPI {
     public ResponseEntity<ApiResponse<UserResponse>> getCurrentUser() {
         User user = authUseCaseService.getCurrentUser();
         
+        UserResponse.TeamInfo teamInfo = null;
+        if (user.team() != null) {
+            teamInfo = new UserResponse.TeamInfo(
+                    user.team().id(),
+                    user.team().teamName()
+            );
+        }
+        
         UserResponse userResponse = new UserResponse(
             user.id(),
             user.userName(),
@@ -54,7 +62,8 @@ public class AuthController implements AuthAPI {
             user.userAddress(),
             user.phoneNumber(),
             user.status(),
-            user.role()
+            user.role(),
+            teamInfo
         );
         
         return ResponseEntity.ok(ApiResponse.success("User retrieved successfully", userResponse));

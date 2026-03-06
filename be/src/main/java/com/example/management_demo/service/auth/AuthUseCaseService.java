@@ -43,7 +43,8 @@ public class AuthUseCaseService {
             userEntity.getUserAddress(),
             userEntity.getPhoneNumber(),
             userEntity.getStatus().name(),
-            userEntity.getRole().name()
+            userEntity.getRole().name(),
+            null // team will be loaded if needed
         );
     }
 

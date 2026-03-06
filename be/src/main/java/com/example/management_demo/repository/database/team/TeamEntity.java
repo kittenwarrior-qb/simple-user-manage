@@ -1,4 +1,4 @@
-package com.example.management_demo.repository.database.company;
+package com.example.management_demo.repository.database.team;
 
 import com.example.management_demo.repository.database.users.UserEntity;
 import jakarta.persistence.*;

@@ -1,5 +1,7 @@
 package com.example.management_demo.dto.users;
 
+import com.example.management_demo.dto.company.Team;
+
 public record User(
         Long id,
         String userName,
@@ -8,6 +10,7 @@ public record User(
         String userAddress,
         String phoneNumber,
         String status,
-        String role
+        String role,
+        Team team
 ) {
 }
