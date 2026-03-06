@@ -1,5 +1,6 @@
 package com.example.management_demo.repository.database.users;
 
+import com.example.management_demo.repository.database.company.TeamEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -40,6 +41,10 @@ public class UserEntity {
     @Column(nullable = false)
     @Builder.Default
     private Role role = Role.USER;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private TeamEntity team;
 
     public enum Status {
         ACTIVE,
