@@ -8,6 +8,20 @@ export interface User {
   phoneNumber: string
   role: string
   status: "ACTIVE" | "INACTIVE"
+  team?: {
+    id: number
+    teamName: string
+  }
+}
+
+export interface CreateUserRequest {
+  userName: string
+  userEmail: string
+  password: string
+  phoneNumber: string
+  userAddress: string
+  role: string
+  status: "ACTIVE" | "INACTIVE"
 }
 
 export interface ApiResponse<T> {
@@ -48,7 +62,7 @@ export const userService = {
     return response.data.data
   },
 
-  createUser: async (data: Omit<User, "id">): Promise<User> => {
+  createUser: async (data: CreateUserRequest): Promise<User> => {
     const response = await api.post<ApiResponse<User>>("/users", data)
     return response.data.data
   },
@@ -60,5 +74,17 @@ export const userService = {
 
   deleteUser: async (id: number): Promise<void> => {
     await api.delete(`/users/${id}`)
+  },
+
+  restrictUser: async (id: number): Promise<void> => {
+    await api.patch(`/users/${id}/restrict`)
+  },
+
+  activateUser: async (id: number): Promise<void> => {
+    await api.patch(`/users/${id}/activate`)
+  },
+
+  assignTeam: async (userId: number, teamId: number): Promise<void> => {
+    await api.patch(`/users/${userId}/assign-team`, null, { params: { teamId } })
   },
 }
