@@ -1,0 +1,82 @@
+﻿Initialized native services in: C:\Users\Admin\.gradle\native
+Initialized jansi services in: C:\Users\Admin\.gradle\native
+The client will now receive all logging from the daemon (pid: 25352). The daemon log file: C:\Users\Admin\.gradle\daemon\9.3.1\daemon-25352.out.log
+Starting 6th build in daemon [uptime: 15 mins 3.679 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 512 MiB, non-heap usage: 23% of 384 MiB]
+Using 16 worker leases.
+Operational build model parameters: {requiresToolingModels=false, parallelProjectExecution=false, configureOnDemand=false, configurationCache=false, configurationCacheParallelStore=false, configurationCacheParallelLoad=true, isolatedProjects=false, parallelProjectConfiguration=false, intermediateModelCache=false, parallelToolingApiActions=false, invalidateCoupledProjects=false, modelAsProjectDependency=false, resilientModelBuilding=false}
+Now considering [D:\Desktop\management-demo] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'D:\Desktop\management-demo\settings.gradle'.
+Projects loaded. Root project using build file 'D:\Desktop\management-demo\build.gradle'.
+Included projects: [root project 'management-demo']
+
+> Configure project :
+Evaluating root project 'management-demo' using build file 'D:\Desktop\management-demo\build.gradle'.
+Resolved plugin [id: 'java']
+Resolved plugin [id: 'org.springframework.boot', version: '4.0.3']
+Resolved plugin [id: 'io.spring.dependency-management', version: '1.1.7']
+Applying dependency management to configuration 'annotationProcessor' in project 'management-demo'
+Applying dependency management to configuration 'apiElements' in project 'management-demo'
+Applying dependency management to configuration 'archives' in project 'management-demo'
+Applying dependency management to configuration 'bootArchives' in project 'management-demo'
+Applying dependency management to configuration 'compileClasspath' in project 'management-demo'
+Applying dependency management to configuration 'compileOnly' in project 'management-demo'
+Applying dependency management to configuration 'default' in project 'management-demo'
+Applying dependency management to configuration 'developmentOnly' in project 'management-demo'
+Applying dependency management to configuration 'implementation' in project 'management-demo'
+Applying dependency management to configuration 'mainSourceElements' in project 'management-demo'
+Applying dependency management to configuration 'productionRuntimeClasspath' in project 'management-demo'
+Applying dependency management to configuration 'runtimeClasspath' in project 'management-demo'
+Applying dependency management to configuration 'runtimeElements' in project 'management-demo'
+Applying dependency management to configuration 'runtimeOnly' in project 'management-demo'
+Applying dependency management to configuration 'testAndDevelopmentOnly' in project 'management-demo'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'management-demo'
+Applying dependency management to configuration 'testCompileClasspath' in project 'management-demo'
+Applying dependency management to configuration 'testCompileOnly' in project 'management-demo'
+Applying dependency management to configuration 'testImplementation' in project 'management-demo'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'management-demo'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'management-demo'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'management-demo'
+All projects evaluated.
+Task name matched 'build'
+Selected primary task 'build' from project :
+Resolving global dependency management for project 'management-demo'
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Tasks to be executed: [task ':compileJava', task ':processResources', task ':classes', task ':resolveMainClassName', task ':bootJar', task ':jar', task ':assemble', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test', task ':check', task ':build']
+Tasks that were excluded: []
+Resolve mutations for :compileJava (Thread[#1306,Execution worker,5,main]) started.
+:compileJava (Thread[#1306,Execution worker,5,main]) started.
+This JVM does not support getting OS memory, so no OS memory status updates will be broadcast
+
+> Task :compileJava
+Custom actions are attached to task ':compileJava'.
+Caching disabled for task ':compileJava' because:
+  Build cache is disabled
+Task ':compileJava' is not up-to-date because:
+  Input property 'stableSources' file D:\Desktop\management-demo\src\main\java\com\example\management_demo\controller\users\UserAPI.java has changed.
+  Input property 'stableSources' file D:\Desktop\management-demo\src\main\java\com\example\management_demo\controller\users\models\UserRequest.java has changed.
+  Input property 'stableSources' file D:\Desktop\management-demo\src\main\java\com\example\management_demo\dto\users\User.java has changed.
+  and more...
+Compilation mode: default, forking compiler
+Created classpath snapshot for incremental compilation in 0.045 secs.
+Compiling with toolchain 'C:\Program Files\Java\jdk-17'.
+Starting process 'Gradle Worker Daemon 7'. Working directory: C:\Users\Admin\.gradle\workers Command: C:\Program Files\Java\jdk-17\bin\java.exe --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED @C:\Users\Admin\.gradle\.tmp\gradle-worker-classpath12827646039266278744txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Worker Daemon 7'
+Successfully started process 'Gradle Worker Daemon 7'
+Started Gradle worker daemon (0.467 secs) with fork options DaemonForkOptions{executable=C:\Program Files\Java\jdk-17\bin\java.exe, minHeapSize=null, maxHeapSize=null, jvmArgs=[--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED, --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED], keepAliveMode=DAEMON}.
+Compiling with JDK Java compiler API.
+Incremental compilation of 23 classes completed in 4.449 secs.
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/Desktop/management-demo/build/reports/problems/problems-report.html
+1 actionable task: 1 executed
+Watched directory hierarchies: [D:\Desktop\management-demo]

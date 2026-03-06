@@ -1,0 +1,23 @@
+
+> Task :compileJava
+D:\Desktop\management-demo\src\main\java\com\example\management_demo\repository\database\users\UserEntity.java:36: warning: @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+    private Status status = Status.RESTRICTED;
+                   ^
+Note: D:\Desktop\management-demo\src\main\java\com\example\management_demo\security\JwtRequestFilter.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 warning
+
+> Task :processResources
+> Task :classes
+> Task :resolveMainClassName
+> Task :bootJar
+> Task :jar
+> Task :assemble
+> Task :check
+> Task :build
+
+[Incubating] Problems report is available at: file:///D:/Desktop/management-demo/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 6s
+5 actionable tasks: 5 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.1/userguide/configuration_cache_enabling.html
